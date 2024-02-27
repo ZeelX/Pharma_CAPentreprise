@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste ODS des clubs</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+{% include 'navbar.html' %}
+
+<div class="container my-1 py-2">
+
+    <h1 class="my-1 py-2 text-center">Liste ODS des clubs</h1>
+    <hr>
+
+    <div class="pagination d-flex justify-content-center">
+    {% if data_ods.has_previous %}
+        <a class="px-5" href="?page=1">&laquo; Première</a>
+        <a class="px-5"  href="?page={{ data_ods.previous_page_number }}">Précédente</a>
+    {% endif %}
+
+    <div class="current">{{ data_ods.number }} / {{ data_ods.paginator.num_pages }}</div>
+
+    {% if data_ods.has_next %}
+        <a class="px-5"  class="text-center" href="?page={{ data_ods.next_page_number }}">Suivante</a>
+        <a class="px-5"  href="?page={{ data_ods.paginator.num_pages }}">Dernière &raquo;</a>
+    {% endif %}
+</div>
+
+
+    <table class="table table-striped  table-hover">
+        <thead>
+            <tr>
+<!--                <th scope="col">Code Commune</th>-->
+                <th scope="col">Commune</th>
+<!--                <th scope="col">Code QPV</th>-->
+<!--                <th scope="col">Nom QPV</th>-->
+                <th scope="col">Département</th>
+                <th scope="col">Région</th>
+<!--                <th scope="col">Statut géo</th>-->
+<!--                <th scope="col">Code</th>-->
+                <th scope="col">Fédération</th>
+<!--                <th scope="col">Clubs</th>-->
+<!--                <th scope="col">EPA</th>-->
+<!--                <th scope="col">Date</th>-->
+            </tr>
+        </thead>
+        <tbody>
+        {% for data in data_ods %}
+         <tr>
+<!--            <td>{{ data.code_commune}}</td>-->
+            <td>{{ data.commune }}</td>
+<!--            <td>{{ data.code_qpv }}</td>-->
+<!--            <td>{{ data.nom_qpv }}</td>-->
+            <td>{{ data.departement }}</td>
+            <td>{{ data.region }}</td>
+<!--            <td>{{ data.statut_geo}}</td>-->
+<!--            <td>{{ data.code }}</td>-->
+            <td>{{ data.federation }}</td>
+<!--            <td>{{ data.clubs }}</td>-->
+<!--            <td>{{ data.epa }}</td>-->
+<!--            <td>{{ data.date }}</td>-->
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
