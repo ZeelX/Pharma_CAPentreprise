@@ -1,37 +1,52 @@
-<nav class="nav navbar navbar-expand-lg navbar-dark bg-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-        <img src="https://www.walden-group.com/wp-content/uploads/2020/06/01-Logo-Walden-Color.png" alt="" width="60" height="60">
 
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <div class="btn-group navOne d-flex justify-content-center"style="border-bottom: 1px solid #ccc;">
           <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
-        </li>
-          <li class="nav-item">
+        </div>
+          <div class="btn-group  navTwo d-flex justify-content-center"style="border-bottom: 1px solid #ccc;">
           <a class="nav-link" href="{% url 'search' %}">Search Form</a>
-        </li>
-        <li class="nav-item">
+        </div>
+        <div class="btn-group navThree d-flex justify-content-center"style="border-bottom: 1px solid #ccc;">
           <a class="nav-link" href="http://localhost:8000/admin">Admin page</a>
-        </li>
+        </div>
 
-        <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          API
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="http://localhost:8000/api/dwh/?table=F_Dose">F_Dose</a></li>
-          <li><a class="dropdown-item" href="http://localhost:8000/api/dwh/?table=D_Geo">Geography</a></li>
-          <li><a class="dropdown-item" href="http://localhost:8000/api/dwh/?table=D_Date">Date</a></li>
-          <li><a class="dropdown-item" href="http://localhost:8000/api/dwh/?table=D_Vaccine_Type">Vaccine Type</a></li>
 
-        </ul>
-      </div>
-      </ul>
-    </div>
-  </div>
-</nav>
+        <div class="btn-group dropend navFour">
+          <button type="button" style="color: white; border-bottom: 1px solid #ccc;" class="btn dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+            Api
+          </button>
+          <ul class="dropdown-menu bg-dark">
+          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=F_Dose">F_Dose</a></li>
+          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Geo">Geography</a></li>
+          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Date">Date</a></li>
+          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Vaccine_Type">Vaccine Type</a></li>
+          </ul>
+        </div>
+
+<style>
+    .navOne, .navTwo, .navThree, .navFour {
+  position: absolute;
+  color: white;
+  width: 140px;
+  text-decoration: none;
+  left: 10px;
+  opacity: .9;
+
+
+}
+.navOne, .navTwo, .navThree, .navFour a, a:hover, a:active, a:visited {
+    color: white; }
+
+.navOne{
+    top: 20px;
+}
+.navTwo{
+    top: 65px;
+}
+.navThree{
+    top: 110px;
+}
+.navFour{
+    top: 155px;
+}
+
+</style>
