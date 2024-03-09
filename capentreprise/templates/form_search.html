@@ -12,9 +12,11 @@
 </head>
 <body>
 
-<div class="container-fluid ">
+{% include 'navbar.html' %}
 
-    <div class="row">
+<div class="container-fluid mt-5">
+
+    <div class="row mb-5">
         <div class="offset-5 mt-5 col-2 d-flex justify-content-center">
             <h1 style="color:white;">Recherche</h1>
         </div>
@@ -26,7 +28,7 @@
         </div>
     </div>
 
-    <form class="offset-5 mt-5 col-2 d-flex flex-column" method="post" action="{% url 'result' %}">
+    <form class="offset-5 mt-5 col-2 d-flex flex-column justify-content-center" method="post" action="{% url 'result' %}">
          {% csrf_token %}
         <div class=" mb-4">
             <label for="date">Date</label>
@@ -40,7 +42,7 @@
 
         <div class=" mb-4">
             <label for="departement">Departement</label>
-            <br>
+
             <select name="departement" id="departement">
                 {% for item in departement %}
                     <option>{{ item }}</option>
