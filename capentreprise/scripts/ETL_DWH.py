@@ -14,8 +14,7 @@ from datetime import datetime
 
 
 def extract_data_ods():
-     return ODS.objects.filter(~Q(nb_ucd="0"), ~Q(nb_ucd='NA'), ~Q(code_departement=1),~Q(code_departement=2),~Q(code_departement=3),~Q(code_departement=4),~Q(code_departement=5),~Q(code_departement=6),~Q(code_departement=7),~Q(code_departement=8),~Q(code_departement=9))
-
+     return ODS.objects.filter(~Q(nb_ucd='nan'),~Q(nb_ucd='NA'))
 
 start_time = time.time()
 existing_keys = set()
@@ -65,8 +64,9 @@ D_Geo.objects.all().delete()
 geo_list = []
 existing_keys.clear()
 
+
 for data_geo in extract_data_ods():
-    pk_check_geo = data_geo.code_departement + data_geo.code_region
+    pk_check_geo = data_geo.code_departement.zfill(2) + data_geo.code_region
     if pk_check_geo not in existing_keys:
         date_instance = D_Geo(
             code_PK=pk_check_geo,
@@ -91,10 +91,10 @@ existing_keys.clear()
 
 for data_dose in extract_data_ods():
 
-    pk_check_dose = data_dose.type_de_vaccin + data_dose.code_departement + data_dose.code_region + str(data_dose.date_fin_semaine)
+    pk_check_dose = data_dose.type_de_vaccin + data_dose.code_departement.zfill(2) + data_dose.code_region + str(data_dose.date_fin_semaine)
     if pk_check_dose not in existing_keys:
         vaccine_obj_instance, created = D_Vaccine_Type.objects.get_or_create(code_PK=data_dose.type_de_vaccin)
-        geo_obj_instance, created = D_Geo.objects.get_or_create(code_PK=data_dose.code_departement + data_dose.code_region)
+        geo_obj_instance, created = D_Geo.objects.get_or_create(code_PK=data_dose.code_departement.zfill(2) + data_dose.code_region)
         date_obj_instance, created = D_Date.objects.get_or_create(code_PK=data_dose.date_fin_semaine)
 
         dose_instance = F_Dose(

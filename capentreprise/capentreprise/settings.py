@@ -86,9 +86,16 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -127,3 +134,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = 'http://localhost:8000/admin/'
+#Superuser
+USER = 'Leo'
+PASSWORD = 'root'
+TOKEN_LEO = '31391b73eb3eb054dae7e09d4edb89cc53c32b74'
