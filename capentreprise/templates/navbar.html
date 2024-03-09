@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
         <img src="https://www.walden-group.com/wp-content/uploads/2020/06/01-Logo-Walden-Color.png" alt="" width="60" height="60">
+
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,15 +12,18 @@
         <li class="nav-item">
           <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
         </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'search' %}">Search Form</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="http://localhost:8000/admin">Admin page</a>
         </li>
+
         <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           API
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Choose table</a></li>
           <li><a class="dropdown-item" href="http://localhost:8000/api/dwh/?table=F_Dose">F_Dose</a></li>
           <li><a class="dropdown-item" href="http://localhost:8000/api/dwh/?table=D_Geo">Geography</a></li>
           <li><a class="dropdown-item" href="http://localhost:8000/api/dwh/?table=D_Date">Date</a></li>
