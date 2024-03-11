@@ -1,8 +1,6 @@
 import os
 import django
-import sqlite3
-import pandas as pd
-import time
+
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'capentreprise.settings')
 
