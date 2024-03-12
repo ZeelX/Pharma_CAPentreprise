@@ -1,12 +1,14 @@
-from django.shortcuts import render
+import os
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'capentreprise.settings')
+
+django.setup()
+
 from data_parser.models import ODS, F_Dose, D_Date, D_Geo
 from django.db.models import Q
 from datetime import datetime, timedelta
-
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render
 # Create your views here.
 def index(request):
     total = 0
@@ -23,13 +25,15 @@ def index(request):
         # les dates ont 1 semaine de décalage par rapporta  2021
         sunday_3_year = sunday_3_year + timedelta(days=7)
     print(sunday_3_year)
+    formatted_date = sunday_3_year.strftime("%B %d, %Y")
     sunday_3_year = sunday_3_year.strftime('%Y-%m-%d')
+
     dose_week = F_Dose.objects.filter(Q(date_FK_id=sunday_3_year), Q(geo_FK_id=6384))
 
     for dose in dose_week:
         total = total + dose.count_dose
 
-    context = {'date': sunday_3_year, 'departement': 'Puy de Dôme', 'dose': int(total), 'request': request}
+    context = {'date': formatted_date, 'departement': 'Puy de Dôme', 'dose': int(total), 'request': request}
     return render(request, 'index.html', context=context)
 
 def research(request):
@@ -46,7 +50,7 @@ def research(request):
         departement_list.append(item.libelle_departement)
 
     context = {'date': date_list, 'departement': departement_list}
-    return render(request, 'form_search.html', context=context)
+    return render(request, 'searchpage.html', context=context)
 
 def result(request):
 
@@ -54,6 +58,7 @@ def result(request):
     if request.method == 'POST':
         total = 0
         date = request.POST.get('date', '')
+
         departement = request.POST.get('departement', '')
         geo_PK = D_Geo.objects.filter(Q(libelle_departement=departement))
 

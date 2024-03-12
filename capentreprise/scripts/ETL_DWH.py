@@ -1,13 +1,10 @@
 import os
 import django
-import sqlite3
-import pandas as pd
 import time
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'capentreprise.settings')
 
 django.setup()
-
 from data_parser.models import ODS, D_Vaccine_Type, D_Geo, D_Date, F_Dose
 from django.db.models import Q
 from datetime import datetime

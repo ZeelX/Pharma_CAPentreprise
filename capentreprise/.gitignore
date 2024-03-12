@@ -36,7 +36,8 @@ flux-total-dep.csv
 .Trashes
 ehthumbs.db
 Thumbs.db
-/discord/.env
+/discord
+
 
 ######################
 # Specific files #

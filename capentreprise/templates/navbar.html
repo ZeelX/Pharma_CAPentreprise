@@ -1,52 +1,63 @@
+<div class="btn-group navOne d-flex justify-content-center" style="border-bottom: 1px solid #ccc;">
+    <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
+       href="{% url 'index' %}">Home</a>
+</div>
+<div class="btn-group  navTwo d-flex justify-content-center" style="border-bottom: 1px solid #ccc;">
+    <a class="nav-link" href="{% url 'search' %}">Search Form</a>
+</div>
+<div class="btn-group navThree d-flex justify-content-center" style="border-bottom: 1px solid #ccc;">
+    <a class="nav-link" href="http://localhost:8000/admin">Admin page</a>
+</div>
 
-        <div class="btn-group navOne d-flex justify-content-center"style="border-bottom: 1px solid #ccc;">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
-        </div>
-          <div class="btn-group  navTwo d-flex justify-content-center"style="border-bottom: 1px solid #ccc;">
-          <a class="nav-link" href="{% url 'search' %}">Search Form</a>
-        </div>
-        <div class="btn-group navThree d-flex justify-content-center"style="border-bottom: 1px solid #ccc;">
-          <a class="nav-link" href="http://localhost:8000/admin">Admin page</a>
-        </div>
 
-
-        <div class="btn-group dropend navFour">
-          <button type="button" style="color: white; border-bottom: 1px solid #ccc;" class="btn dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
-            Api
-          </button>
-          <ul class="dropdown-menu bg-dark">
-          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=F_Dose">F_Dose</a></li>
-          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Geo">Geography</a></li>
-          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Date">Date</a></li>
-          <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Vaccine_Type">Vaccine Type</a></li>
-          </ul>
-        </div>
+<div class="btn-group dropend navFour">
+    <button type="button" style="color: white; border-bottom: 1px solid #ccc;" class="btn dropdown-toggle nav-link"
+            data-bs-toggle="dropdown" aria-expanded="false">
+        Api
+    </button>
+    <ul class="dropdown-menu bg-dark">
+        <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=F_Dose">F_Dose</a>
+        </li>
+        <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Geo">Geography</a>
+        </li>
+        <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Date">Date</a>
+        </li>
+        <li><a class="dropdown-item btn-group" style="color: white" href="http://localhost:8000/api/dwh/?table=D_Vaccine_Type">Vaccine Type</a>
+        </li>
+    </ul>
+</div>
 
 <style>
     .navOne, .navTwo, .navThree, .navFour {
-  position: absolute;
-  color: white;
-  width: 140px;
-  text-decoration: none;
-  left: 10px;
-  opacity: .9;
+        position: absolute;
+        color: white;
+        width: 140px;
+        text-decoration: none;
+        left: 10px;
+        opacity: .9;
 
 
-}
-.navOne, .navTwo, .navThree, .navFour a, a:hover, a:active, a:visited {
-    color: white; }
+    }
 
-.navOne{
-    top: 20px;
-}
-.navTwo{
-    top: 65px;
-}
-.navThree{
-    top: 110px;
-}
-.navFour{
-    top: 155px;
-}
+    .navOne, .navTwo, .navThree, .navFour a, a:hover, a:active, a:visited {
+        color: white;
+    }
+
+    .navOne {
+        top: 20px;
+    }
+
+    .navTwo {
+        top: 65px;
+    }
+
+    .navThree {
+        top: 110px;
+    }
+
+    .navFour {
+        top: 155px;
+    }
+
 
 </style>
